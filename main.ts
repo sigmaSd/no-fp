@@ -44,14 +44,24 @@ if (import.meta.main) {
   await copy(import.meta.resolve(ESLINT_CONFIG_PATH), ESLINT_CONFIG_PATH);
   await copy(import.meta.resolve(TSCONFIG_PATH), TSCONFIG_PATH);
 
-  const mode = Deno.args.at(0) === "--install" ? "install" : "run";
-  if (mode === "install") {
-    Deno.exit(0);
-  } else if (mode === "run") {
+  // Install @types/deno first
+  let weCreatedNodeModules = false;
+  if (!existsSync("node_modules")) {
     await new Deno.Command(Deno.execPath(), {
-      args: ["run", "-ES", "-RW=.", "npm:eslint@9.21.0"],
+      args: ["install", "--dev", "--vendor", "npm:@types/deno"],
     }).spawn().status;
-    Deno.removeSync(ESLINT_CONFIG_PATH);
-    Deno.removeSync(TSCONFIG_PATH);
+    weCreatedNodeModules = true;
+  }
+
+  // Run eslint
+  await new Deno.Command(Deno.execPath(), {
+    args: ["run", "-ES", "-RW=.", "npm:eslint@9.21.0"],
+  }).spawn().status;
+
+  // Cleanup
+  Deno.removeSync(ESLINT_CONFIG_PATH);
+  Deno.removeSync(TSCONFIG_PATH);
+  if (weCreatedNodeModules) {
+    Deno.removeSync("node_modules", { recursive: true });
   }
 }

@@ -9,7 +9,7 @@ export default [
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: true, // Enables type-aware linting
+        project: true,
         sourceType: "module",
       },
     },
