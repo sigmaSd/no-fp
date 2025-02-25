@@ -12,9 +12,10 @@
  * ```
  *
  * ## How it works
- * 1. Creates temporary ESLint and TypeScript config files
- * 2. Runs ESLint with rules to detect unhandled promises
- * 3. Cleans up temporary files after checking
+ * 1. Install npm:@types/deno
+ * 2. Creates temporary ESLint and TypeScript config files
+ * 3. Runs ESLint with rules to detect unhandled promises
+ * 4. Cleans up temporary files after checking
  *
  * @module
  */
