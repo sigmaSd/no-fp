@@ -8,7 +8,7 @@
  *
  * @example
  * ```bash
- * deno -RWN jsr:@sigmasd/no-fp # Needs to run in the root of the project
+ * deno -A jsr:@sigmasd/no-fp # Needs to run in the root of the project
  * ```
  *
  * ## How it works
