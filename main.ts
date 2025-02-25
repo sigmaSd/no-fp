@@ -8,8 +8,7 @@
  *
  * @example
  * ```bash
- * # Run floating promise detection in project root
- * deno -RWN jsr:@sigmasd/no-fp
+ * deno -RWN jsr:@sigmasd/no-fp # Needs to run in the root of the project
  * ```
  *
  * ## How it works
