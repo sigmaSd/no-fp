@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "strict": true, // Enables all strict type-checking options
+    "noEmit": true, // Don't output any compiled files
+    "allowJs": true // Important, allows linting of .js files too, if you have any
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
